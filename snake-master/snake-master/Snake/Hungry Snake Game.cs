@@ -47,6 +47,7 @@ namespace Snake
             snake.Add(snakeHead);
             lblScore.Text = Settings.score.ToString();
             generateFood();
+            generateFood2();
         }
 
         /// <summary>
@@ -142,6 +143,11 @@ namespace Snake
                         new Rectangle(food.x * Settings.width,
                         food.y * Settings.height, Settings.width,
                         Settings.height));
+                    //special food
+                    canvas.FillEllipse(Brushes.Green,
+                       new Rectangle(specialfood.x * Settings.width,
+                       specialfood.y * Settings.height, Settings.width,
+                       Settings.height));
 
                 }
 
@@ -186,6 +192,10 @@ namespace Snake
                     if (snake[i].x == food.x && snake[i].y == food.y) {
                         eat();
                     }
+                    else if (snake[i].x == food.x && snake[i].y == food.y)
+                        {
+                        eaten();
+                        }
                 }
                 // move the rest of the body.
                 else {
